@@ -1,0 +1,108 @@
+{% extends "./base-fullscreen.html" %}
+
+{% block title %} Login {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+
+    <div class="content">
+        <div class="container" >
+            <p class="navbar-brand"  href="/">
+                <font size="+2">
+                <center>
+                <i class="fa-solid fa-globe" ></i> PKMedia
+                </center>
+            </font>
+            </p>
+            <div class="row pt-5">
+                <div class="col-md-6 mt-5 offset-md-3 pt-5 mt-5">
+                    
+    
+                    <div class="card">
+                        
+                        <div class="card-header text-center py-4">
+                            <h4 class="title">
+                                Sign In
+                            </h4>
+
+                            <h6 class="card-category">
+                                {% if msg %}
+                                  <span class="text-danger">{{ msg | safe }}</span>
+                                {% else %}
+                                <span>
+                                  Add your credentials
+                                </span>
+                                {% endif %}  
+                            </h6>
+                        </div>
+                        <div>
+                            <style>
+                                h5{
+                                    color: red;
+                                }
+                            </style>
+                            {% for message in messages %}
+
+                            <center><h5>{{message}}</h5></center>
+                            {% endfor %}
+                        </div>
+                        <form  method="post" action="">
+                                
+                            {% csrf_token %}  
+
+                            <div class="card-body px-5 py-3"> 
+
+                                <div class="row">
+                                    <div class="col-md-12 px-md-1">
+                                        <div >
+                                            <label>Username</label>
+                                        
+                                        </div>
+                                        <div>
+                                            <input type="text" name="username" placeholder="Username" >
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 px-md-1">
+                                        <div >
+                                            <label>Password</label>
+                                            
+                                        </div>
+                                        <div>
+                                            <input type="password" name="password" placeholder="Password" class="bg-gray-200 mb-2 shadow-none dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+                            </div>
+                            
+                            <div class="card-footer text-center">
+                                <button type="submit" class="btn btn-fill btn-primary">Login</button>
+                                
+                                <br /><br />
+
+                                <p>
+                                    Don't have an account? <a href="/signup" class="text-primary">Register</a>                            
+                                </p>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

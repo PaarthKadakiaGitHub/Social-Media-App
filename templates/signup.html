@@ -1,0 +1,117 @@
+{% extends "./base-fullscreen.html" %}
+
+{% block title %} Register {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="content">
+        <div class="container">
+            <p class="navbar-brand"  href="/">
+                <font size="+2">
+                    <center>
+                    <i class="fa-solid fa-globe" ></i> PKMedia
+                    </center>
+                </font>
+            </p>
+            <div class="row pt-5">
+                <div class="col-md-6 mt-5 offset-md-3 pt-5 mt-5">
+                    <div class="card">
+                        <div class="card-header text-center py-4">
+                            <h4 class="title">
+                                Sign Up
+                            </h4>
+                            <div>
+                                <style>
+                                    h5{
+                                        color: red;
+                                    }
+                                </style>
+                                {% for message in messages %}
+                                <h5>{{message}}</h5>
+                                {% endfor %}
+                            </div> 
+
+                        </div>
+
+                        {% if success %}
+
+                            <div class="card-footer text-center">
+                                <a href="/signin" 
+                                   class="btn btn-fill btn-primary">Login</a>
+                            </div>
+
+                        {% else %}
+
+                            <form method="post" action="">
+            
+                                {% csrf_token %}
+
+                                <div class="card-body px-5 py-3">
+
+                                    <div class="row">
+                                        <div class="col-md-12 px-md-1">
+                                            <div >
+                                                <label>Username</label>
+                                            </div>
+                                            <input type="text" name="username" placeholder="Username" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+
+                                        </div>
+
+                                        <div class="col-md-12 px-md-1">
+                                            <div >
+                                                <label>Email</label>
+                                            </div>
+                                            <input type="email" name="email" placeholder="Email" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+
+                                        </div>
+
+                                        <div class="col-md-12 px-md-1">
+                                            <div >
+                                                <label>Password</label>
+                                            </div>
+                                            <input type="password" name="password" placeholder="Password" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+
+                                        </div>
+
+                                        <div class="col-md-12 px-md-1">
+                                            <div >
+                                                <label>Password Check</label>
+                                                
+                                            </div>
+                                            <input type="password" name="password2" placeholder="Confirm Password" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+
+                                        </div>                                        
+
+                                    </div>
+
+                                    
+                                </div>
+                                <div class="card-footer text-center">
+                                    <button type="submit" class="btn btn-fill btn-primary">Register</button>
+
+                                    <br /><br />
+                                    
+                                    <p>
+                                        Have an account? <a href="/signin" class="text-primary">Login</a>
+                                    </p> 
+                                </div>
+                            
+                            </form>
+
+                        {% endif %} 
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
